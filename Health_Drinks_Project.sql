@@ -70,10 +70,10 @@ ORDER BY CASE
 
 -- DOANH SỐ BÁN HÀNG TB THEO NGÀY TRONG TUẦN
 WITH Doanh_Số_bán AS
-  (SELECT CAST(Orderdate AS date) AS Ngày_Cụ_Thể, -- Chỉ lấy ngày ví dụ 01-01-2022
-DATEPART(WEEKDAY, OrderDate) Week_Day, -- Lấy Thứ trong ngày ví dụ 01-01-2022 là thứ 7 nó sẽ in ra số 7
-SUM(TotalPrice) AS Total_Price, -- Tổng Doanh Thu
-SUM(Quantity) AS Total_Quantity -- Tổng số lượng
+  (SELECT CAST(Orderdate AS date) AS Ngày_Cụ_Thể, 
+DATEPART(WEEKDAY, OrderDate) Week_Day, 
+SUM(TotalPrice) AS Total_Price, 
+SUM(Quantity) AS Total_Quantity 
 FROM OrderTea
    GROUP BY CAST(Orderdate AS date),
             DATEPART(WEEKDAY, OrderDate))
@@ -87,7 +87,7 @@ SELECT CASE Week_Day
            WHEN 7 THEN N'Thứ 7'
        END AS Weekday,
        COUNT(*) AS Total_WeekDay,
-       CONCAT(AVG(Total_Price), N' Triệu VNĐ') AS AVG_Price, -- Trung bình doanh thu ở đây Ví dụ thứ 2 có 52 ngày thứ 2, doanh thu = ..... doanh thu/52
+       CONCAT(AVG(Total_Price), N' Triệu VNĐ') AS AVG_Price, 
 CONCAT(AVG(Total_Quantity), N' SKUs') AS AVG_Quantity
 FROM Doanh_Số_bán
 GROUP BY Week_Day
@@ -102,7 +102,7 @@ ORDER BY CASE
 -- DOANH SỐ BÁN TRUNG BÌNH THEO NGÀY TRONG THÁNG (CÔNG THỨC SUM(DoanhThuTheoTừngNgày)/COUNT(SốNgàyTrongTháng))
 WITH Doanh_Số_bán AS
   (SELECT CAST(OrderDate AS DATE) AS Ngày,
-          DATEPART(DAY, OrderDate) AS Ngày_Trong_Tháng, -- Chọn theo ngày trong tháng
+          DATEPART(DAY, OrderDate) AS Ngày_Trong_Tháng,
 SUM(TotalPrice) AS Total_Price,
 SUM(Quantity) AS Total_Quantity
    FROM OrderTea
@@ -110,7 +110,7 @@ SUM(Quantity) AS Total_Quantity
             DATEPART(DAY, OrderDate))
 SELECT CONCAT(N'Ngày ', Ngày_Trong_Tháng) AS DAY,
        COUNT(*) AS Total_Day,
-       CONCAT(AVG(Total_Price), N' Triệu VNĐ') AS AVG_Price, -- Trung bình ở doanh thu theo ngày trong tháng có ví dụ Tổng doanh thu/ COUNT(Ngày_Trong_Tháng) = 12 (Ngày 1)
+       CONCAT(AVG(Total_Price), N' Triệu VNĐ') AS AVG_Price,
 CONCAT(AVG(Total_Quantity), N' SKUs') AS AVG_Quantity
 FROM Doanh_Số_bán
 GROUP BY Ngày_Trong_Tháng
@@ -162,21 +162,21 @@ WITH DistinctOrder AS
    FROM OrderTea
    GROUP BY Order_ID,
             Category_ID,
-            Category), -- Tính tổng đơn hàng theo từng nhóm ORDER
+            Category), 
 CategoryCount AS
   (SELECT Category_ID,
           Category,
           COUNT(DISTINCT(Order_ID)) AS Distinct_Order
    FROM DistinctOrder
    GROUP BY Category_ID,
-            Category), -- Tổng đơn hàng của ORDER = 31438
+            Category),
 TotalOrder AS
   (SELECT COUNT(DISTINCT(Order_ID)) AS Total_Order
    FROM OrderTea)
 SELECT CT.Category_ID,
        CT.Category,
        CT.Distinct_Order AS Quantity_Order,
-       CONCAT(CAST(CT.Distinct_Order * 1.0/TOR.Total_Order AS DECIMAL(5, 2)) * 100, '%') AS Probability -- Tính Xác suất
+       CONCAT(CAST(CT.Distinct_Order * 1.0/TOR.Total_Order AS DECIMAL(5, 2)) * 100, '%') AS Probability 
 FROM CategoryCount AS CT
 CROSS JOIN TotalOrder AS TOR
 ORDER BY Probability DESC;
@@ -198,7 +198,7 @@ WITH DistinctOrder AS
   (SELECT MONTH,
           Category_ID,
           Category,
-          COUNT(DISTINCT(Order_ID)) AS Distinct_Order -- Đếm số đơn hàng của nhóm hàng theo tháng
+          COUNT(DISTINCT(Order_ID)) AS Distinct_Order 
 FROM DistinctOrder
    GROUP BY MONTH,
             Category_ID,
@@ -206,7 +206,7 @@ FROM DistinctOrder
      TotalOrderMonth AS
   (SELECT DATEPART(MONTH, OrderDate) AS MONTH,
           COUNT(DISTINCT(Order_ID)) AS Total_Order
-   FROM OrderTea -- Đếm tổng số đơn hàng theo tháng
+   FROM OrderTea 
 GROUP BY DATEPART(MONTH, OrderDate))
 SELECT COM.Month,
        COM.Category_ID,
@@ -311,6 +311,7 @@ INNER JOIN CountOrderMonth AS COM ON COD.Category_ID = COM.Category_ID
 AND COD.Month = COM.Month
 ORDER BY COD.MONTH,
          Category_ID ASC;
+
 
 
 
