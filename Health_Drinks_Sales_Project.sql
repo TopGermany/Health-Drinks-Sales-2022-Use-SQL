@@ -22,8 +22,6 @@ GROUP BY Category_ID,
 ORDER BY SUM(TotalPrice) DESC
 
 
-
-
 -- DOANH SỐ BÁN HÀNG THEO MẶT HÀNG
 SELECT Product_ID,
        Product,
@@ -34,8 +32,6 @@ WHERE YEAR(OrderDate) = 2022
 GROUP BY Product_ID,
          Product
 ORDER BY SUM(TotalPrice) DESC;
-
-
 
 
 -- DOANH SỐ BÁN HÀNG THEO THÁNG 
@@ -67,7 +63,6 @@ ORDER BY CASE
          END;
 
 
-
 -- DOANH SỐ BÁN HÀNG TB THEO NGÀY TRONG TUẦN
 WITH Doanh_Số_bán AS
   (SELECT CAST(Orderdate AS date) AS Ngày_Cụ_Thể, 
@@ -97,8 +92,6 @@ ORDER BY CASE
          END; 
 
 
-
-
 -- DOANH SỐ BÁN TRUNG BÌNH THEO NGÀY TRONG THÁNG (CÔNG THỨC SUM(DoanhThuTheoTừngNgày)/COUNT(SốNgàyTrongTháng))
 WITH Doanh_Số_bán AS
   (SELECT CAST(OrderDate AS DATE) AS Ngày,
@@ -115,7 +108,6 @@ CONCAT(AVG(Total_Quantity), N' SKUs') AS AVG_Quantity
 FROM Doanh_Số_bán
 GROUP BY Ngày_Trong_Tháng
 ORDER BY Ngày_Trong_Tháng ASC;
-
 
 
 -- DOANH SỐ BÁN HÀNG TRUNG BÌNH THEO GIỜ
@@ -150,7 +142,6 @@ SELECT CASE ThờiGian
 FROM Doanh_Số_Bán_Theo_Giờ
 GROUP BY ThờiGian
 ORDER BY Hour_Range ASC;
-
 
 
 -- XÁC SUẤT BÁN HÀNG THEO NHÓM HÀNG (CÔNG THỨC: TỔNG ĐƠN HÀNG THEO TỪNG NHÓM ORDER / TỔNG ĐƠN HÀNG CỦA ORDER)
@@ -217,7 +208,6 @@ FROM CountOrderMonth AS COM
 INNER JOIN TotalOrderMonth AS TOM ON COM.Month = TOM.Month
 ORDER BY MONTH,
          Probability ASC;
-
 
 
 -- XÁC SUẤT BÁN HÀNG CỦA MẶT HÀNG THEO TỪNG NHÓM HÀNG (SỐ LƯỢNG ĐƠN HÀNG BÁN CỦA MẶT HÀNG THEO NHÓM/TỔNG SỐ LƯỢNG ĐƠN HÀNG CỦA NHÓM HÀNG)
@@ -311,6 +301,7 @@ INNER JOIN CountOrderMonth AS COM ON COD.Category_ID = COM.Category_ID
 AND COD.Month = COM.Month
 ORDER BY COD.MONTH,
          Category_ID ASC;
+
 
 
 
