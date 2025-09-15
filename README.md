@@ -1,4 +1,4 @@
-<img width="251" height="25" alt="image" src="https://github.com/user-attachments/assets/69b21a31-b095-45ad-a16a-95b9c311313b" /># 🥤 **Phân Tích Dữ Liệu Đồ Uống Sức Khỏe Bằng SQL**
+🥤 **Phân Tích Dữ Liệu Đồ Uống Sức Khỏe Bằng SQL**
 
 ## 📌 **Giới thiệu**
 Dự án này tập trung vào việc **phân tích dữ liệu bán hàng và khách hàng** của một công ty đồ uống sức khỏe.  
@@ -33,3 +33,6 @@ Các cột dữ liệu cần chọn để phân tích:
 | ORD000003  | CUZ00003    | Phạm Văn Linh | C3                  | No Occupation              | 45+   | Old          | TMX         | Tea mix                  | TMX01      | Trà dưỡng nhan              | 17450     | 2        | 1     | 35000      | 2022-01-01  | 08:25:07  |
 | ORD000003  | CUZ00003    | Phạm Văn Linh | C3                  | No Occupation              | 45+   | Old          | TTC         | Trà củ, quả sấy          | TTC01      | Trà gừng                    | 11800     | 3        | 1     | 30000      | 2022-01-01  | 08:25:07  |
 | ORD000003  | CUZ00003    | Phạm Văn Linh | C3                  | No Occupation              | 45+   | Old          | TTC         | Trà củ, quả sấy          | TTC02      | Cam lát                     | 25800     | 1        | 1     | 45000      | 2022-01-01  | 08:25:07  |
+
+
+
