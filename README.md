@@ -1,28 +1,30 @@
-🥤 **Phân Tích Dữ Liệu Đồ Uống Sức Khỏe Bằng SQL**
+# 🥤 **Healthy Beverage Sales Data Analysis with SQL**
 
-## 📌 **Giới thiệu**
-Dự án này tập trung vào việc **phân tích dữ liệu bán hàng và khách hàng** của một công ty đồ uống sức khỏe.  
-Mục tiêu chính:
-- Hiểu rõ hành vi mua hàng của khách hàng.  
-- Phân tích doanh thu theo thời gian.
-- Phân tích doanh thu theo từng nhóm hàng, mặt hàng.
-- Xác xuất bán của từng nhóm hàng, mặt hàng.  
-- Xác định nhóm khách hàng tiềm năng.  
-- Đưa ra insight để hỗ trợ quyết định kinh doanh.  
+## 📌 **Introduction**
+This project focuses on **analyzing sales and customer data** of a healthy beverage company.  
+The main objectives are:  
+- Understand customer purchasing behavior.  
+- Analyze revenue over time.  
+- Analyze revenue by product categories and items.  
+- Calculate sales probability of each category and product.  
+- Identify potential customer groups.  
+- Provide insights to support business decision-making.  
 
 ---
 
-## 📂 **Dữ liệu**
-Dự án sử dụng 2 tệp dữ liệu chính:  
-- `DataNotCleaned.xlsx`: dữ liệu gốc, chưa được làm sạch.  
-- `DataCleaned.xlsx`: dữ liệu sau khi làm sạch.  
+## 📂 **Data**
+The project uses 2 main datasets:  
+- `DataNotCleaned.xlsx`: raw data, not cleaned.  
+- `DataCleaned.xlsx`: cleaned data ready for analysis.  
 
-Các cột dữ liệu cần chọn để phân tích:  
-- **sales**: thông tin giao dịch (OrderDate, OrderTime, Order ID, Quantity,TotalPrice).  
-- **customers**: thông tin khách hàng (Customer ID, Name, Occupation, Age, Age Brackets).  
-- **products**: thông tin sản phẩm (Category ID, Category, Product ID, Product).
-## 📂 Ví dụ bảng dữ liệu 
+Selected columns for analysis:  
+- **sales**: transaction details (OrderDate, OrderTime, Order ID, Quantity, TotalPrice).  
+- **customers**: customer details (Customer ID, Name, Occupation, Age, Age Brackets).  
+- **products**: product details (Category ID, Category, Product ID, Product).  
 
+---
+
+## 📂 Example Data Table  
 | Order ID   | Customer ID | Name          | CustomerSegmentCode | Occupation                 | Age   | Age Brackets | Category ID | Category                | Product ID | Product                     | CostPrice | Quantity | Price | TotalPrice | OrderDate   | OrderTime |
 |------------|-------------|---------------|---------------------|----------------------------|-------|--------------|-------------|--------------------------|------------|------------------------------|-----------|----------|-------|------------|-------------|-----------|
 | ORD000001  | CUZ00001    | Lê Vũ Tâm     | A1                  | Office worker and Business owner | 36-45 | Middle Age   | BOT         | Bột                      | BOT01      | Bột cần tây                  | 21800     | 2        | 1     | 40000      | 2022-01-01  | 08:01:09  |
@@ -36,11 +38,12 @@ Các cột dữ liệu cần chọn để phân tích:
 
 ---
 
-## ⚙️ **Các truy vấn SQL tiêu biểu**
+## ⚙️ **Sample SQL Queries**
+
 
 ---
 
-📊 **Truy vấn về thị hiếu khách hàng**
+📊 **Customer Preference Queries**
 
 ```sql
 -- PHÂN KHÚC KHÁCH HÀNG CÓ DOANH SỐ NHIỀU NHẤT THEO NHÓM TUỔI
@@ -50,8 +53,9 @@ FROM OrderTea
 GROUP BY Age_Brackets
 ORDER BY SUM(TotalPrice) DESC;
 ```
-**Kết quả**
-📊 **Phân khúc khách hàng có doanh số nhiều nhất theo nhóm tuổi**
+**Results**  
+📊 **Customer Segment with the Highest Sales by Age Group**
+
 | Age\_Brackets | Total\_Revenue |
 | ------------- | -------------- |
 | Middle Age    | 1,816,860,000  |
@@ -72,8 +76,9 @@ GROUP BY Occupation,
          Product
 ORDER BY Total_Quantity DESC;
 ```
-**Kết quả**
-📊 **Top sản phẩm được mua nhiều nhất bởi nhóm "Student, New employee and Freelancer" và ở nhóm tuổi 'Young'**
+**Results**  
+📊 **Top Products Purchased Most by the "Student, New Employee, and Freelancer" Group in the 'Young' Age Segment**
+
 
 | Occupation                             | Product            | Total_Quantity |
 |----------------------------------------|--------------------|----------------|
@@ -83,7 +88,8 @@ ORDER BY Total_Quantity DESC;
 | Student, New employee and Freelancer   | Trà cam sả quế     | 581            |
 | Student, New employee and Freelancer   | Trà gừng           | 373            |
 
-📊 **Truy vấn về doanh số theo từng nhóm hàng, mặt hàng**
+📊**Query on Sales by Product Category and Item**
+
 ```sql
 -- DOANH SỐ BÁN HÀNG THEO MẶT HÀNG
 SELECT Product_ID,
@@ -96,8 +102,8 @@ GROUP BY Product_ID,
          Product
 ORDER BY SUM(TotalPrice) DESC;
 ```
-**Kết quả**
-📊 **Top sản phẩm theo doanh thu và số lượng bán (SKUs)**
+**Result**  
+📊 **Top Products by Revenue and Sales Volume (SKUs)**
 
 | Product ID | Product                           | Revenue (VND)       | Quantity (SKUs) |
 |------------|-----------------------------------|---------------------|-----------------|
@@ -155,8 +161,8 @@ FROM Doanh_Số_Bán_Theo_Giờ
 GROUP BY ThờiGian
 ORDER BY Hour_Range ASC;
 ```
-**Kết quả**
-📊 **Doanh số bán hàng trung bình theo giờ**
+**Result**  
+📊 **Average Sales by Hour**
 | hour_range |  AVG_Price | SKUs |
 |-------------|------------------------|------|
 | 08:00-08:59 | 772113                | 15   |
@@ -175,5 +181,24 @@ ORDER BY Hour_Range ASC;
 | 21:00-21:59 | 892939                | 17   |
 | 22:00-22:59 | 858159                | 16   |
 | 23:00-23:59 | 856225                | 16   |
+
+
+
+
+## 📈 Expected Results
+- Revenue by beverage type.  
+- Customer segmentation by age and occupation.  
+- Revenue growth trends over time.  
+- Best-selling products and potential customer groups.  
+
+## 🚀 Technologies Used
+- **SQL** (MySQL / PostgreSQL / SQLite)  
+- **Excel** (data preprocessing)  
+
+## ✅ Conclusion
+The analysis of healthy beverage sales data helps to:  
+- Identify which products are most popular.  
+- Determine target customer groups.  
+- Make more accurate and effective business decisions.  
 
 
