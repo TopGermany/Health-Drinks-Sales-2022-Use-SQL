@@ -49,6 +49,16 @@ SELECT Age_Brackets,
 FROM OrderTea
 GROUP BY Age_Brackets
 ORDER BY SUM(TotalPrice) DESC;
+```
+**Kết quả**
+| Age\_Brackets | Total\_Revenue |
+| ------------- | -------------- |
+| Middle Age    | 1,816,860,000  |
+| Adolescent    | 1,331,202,000  |
+| Old           | 1,058,379,000  |
+| Young         | 572,633,000    |
+
+
 
 
 
