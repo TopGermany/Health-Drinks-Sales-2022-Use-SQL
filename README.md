@@ -53,7 +53,9 @@ FROM OrderTea
 GROUP BY Age_Brackets
 ORDER BY SUM(TotalPrice) DESC;
 ```
-**Results**  
+**Results**   
+
+
 📊 **Customer Segment with the Highest Sales by Age Group**
 
 | Age\_Brackets | Total\_Revenue |
@@ -77,6 +79,8 @@ GROUP BY Occupation,
 ORDER BY Total_Quantity DESC;
 ```
 **Results**  
+
+
 📊 **Top Products Purchased Most by the "Student, New Employee, and Freelancer" Group in the 'Young' Age Segment**
 
 
@@ -103,6 +107,8 @@ GROUP BY Product_ID,
 ORDER BY SUM(TotalPrice) DESC;
 ```
 **Result**  
+
+
 📊 **Top Products by Revenue and Sales Volume (SKUs)**
 
 | Product ID | Product                           | Revenue (VND)       | Quantity (SKUs) |
@@ -162,7 +168,10 @@ GROUP BY ThờiGian
 ORDER BY Hour_Range ASC;
 ```
 **Result**  
+
+
 📊 **Average Sales by Hour**
+
 | hour_range |  AVG_Price | SKUs |
 |-------------|------------------------|------|
 | 08:00-08:59 | 772113                | 15   |
