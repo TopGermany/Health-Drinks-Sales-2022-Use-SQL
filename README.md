@@ -41,7 +41,14 @@ Các cột dữ liệu cần chọn để phân tích:
 ---
 
 📊 **Truy vấn về thị hiếu khách hàng**
-<img width="546" height="142" alt="image" src="https://github.com/user-attachments/assets/06570d61-5bc4-4d08-b3bb-70dd2e2a9b31" />
+
+```sql
+-- PHÂN KHÚC KHÁCH HÀNG CÓ DOANH SỐ NHIỀU NHẤT THEO NHÓM TUỔI
+SELECT Age_Brackets,
+       SUM(TotalPrice) AS Total_Revenue
+FROM OrderTea
+GROUP BY Age_Brackets
+ORDER BY SUM(TotalPrice) DESC;
 
 
 
