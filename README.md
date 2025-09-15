@@ -15,7 +15,7 @@ The main objectives are:
 ## 📂 **Data**
 The project uses 2 main datasets:  
 - `DataNotCleaned.xlsx`: raw data, not cleaned.  
-- `DataCleaned.xlsx`: cleaned data ready for analysis.  
+- `DataCleanedCustomer,Sales(OrderTea).csv`: cleaned data ready for analysis.  
 
 Selected columns for analysis:  
 - **sales**: transaction details (OrderDate, OrderTime, Order ID, Quantity, TotalPrice).  
