@@ -34,5 +34,18 @@ Các cột dữ liệu cần chọn để phân tích:
 | ORD000003  | CUZ00003    | Phạm Văn Linh | C3                  | No Occupation              | 45+   | Old          | TTC         | Trà củ, quả sấy          | TTC01      | Trà gừng                    | 11800     | 3        | 1     | 30000      | 2022-01-01  | 08:25:07  |
 | ORD000003  | CUZ00003    | Phạm Văn Linh | C3                  | No Occupation              | 45+   | Old          | TTC         | Trà củ, quả sấy          | TTC02      | Cam lát                     | 25800     | 1        | 1     | 45000      | 2022-01-01  | 08:25:07  |
 
+---
+
+## ⚙️ **Các truy vấn SQL tiêu biểu**
+
+---
+
+📊 **Truy vấn về thị hiếu khách hàng**
+-- PHÂN KHÚC KHÁCH HÀNG CÓ DOANH SỐ NHIỀU NHẤT THEO NHÓM TUỔI
+SELECT Age_Brackets,
+       SUM(TotalPrice) AS Total_Revenue
+FROM OrderTea
+GROUP BY Age_Brackets
+ORDER BY SUM(TotalPrice) DESC;
 
 
