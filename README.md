@@ -58,12 +58,11 @@ ORDER BY SUM(TotalPrice) DESC;
 
 📊 **Customer Segment with the Highest Sales by Age Group**
 
-| Age\_Brackets | Total\_Revenue |
-| ------------- | -------------- |
-| Middle Age    | 1,816,860,000  |
-| Adolescent    | 1,331,202,000  |
-| Old           | 1,058,379,000  |
-| Young         | 572,633,000    |
+| Age Brackets | Total Revenue |
+|--------------|---------------|
+| Middle Age   | 2,030,573,000 |
+| Adolescent   | 1,690,122,000 |
+| Old          | 1,058,379,000 |
 
 
 ```sql
@@ -84,13 +83,13 @@ ORDER BY Total_Quantity DESC;
 📊 **Top Products Purchased Most by the "Student, New Employee, and Freelancer" Group in the 'Young' Age Segment**
 
 
-| Occupation                             | Product            | Total_Quantity |
-|----------------------------------------|--------------------|----------------|
-| Student, New employee and Freelancer   | Bột cần tây        | 1483           |
-| Student, New employee and Freelancer   | Cam lắc            | 896            |
-| Student, New employee and Freelancer   | Trà gạo lứt 8 vị   | 810            |
-| Student, New employee and Freelancer   | Trà cam sả quế     | 581            |
-| Student, New employee and Freelancer   | Trà gừng           | 373            |
+| Occupation                        | Product          | Total Quantity |
+|-----------------------------------|------------------|----------------|
+| Student, New employee and Freelancer | Bột cần tây      | 1866           |
+| Student, New employee and Freelancer | Cam lát          | 1170           |
+| Student, New employee and Freelancer | Trà gạo lứt 8 vị | 1025           |
+| Student, New employee and Freelancer | Trà cam sả quế   | 760            |
+| Student, New employee and Freelancer | Trà gừng         | 706            |
 
 📊**Query on Sales by Product Category and Item**
 
