@@ -15,8 +15,8 @@ The main objectives are:
 
 ## 🚀 Technologies Used
 - **SQL** (MySQL / PostgreSQL / SQLite)  
-- **Excel** (data preprocessing)
-- **PowerBI** (data Visualization)
+- **Excel** (Data Preprocessing)
+- **PowerBI** (Data Visualization)
 
 ---
 ## 📂 **Data**
