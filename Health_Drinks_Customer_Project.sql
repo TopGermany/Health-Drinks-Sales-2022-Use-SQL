@@ -125,4 +125,27 @@ GROUP BY CASE
 ORDER BY MIN((Total_Price/50000)*50000) -- Sắp xếp theo thứ tự
 
 
+-- XÁC SUẤT MUA HÀNG CỦA NHÓM HÀNG THEO NHÓM ĐỘ TUỔI      
+WITH Count_Distinct_CustomerOrder AS
+  (SELECT Age_Brackets,
+          Category,
+          COUNT(DISTINCT(Order_ID)) AS Count_Distinct_Order
+   FROM OrderTea
+   WHERE Category IS NOT NULL
+   GROUP BY Age_Brackets,
+            Category),
+     Count_Distinct_OrderCategory AS
+  (SELECT Category,
+          COUNT(DISTINCT(Order_ID)) AS Count_Distinct_Category
+   FROM OrderTea
+   WHERE Category IS NOT NULL
+   GROUP BY Category)
+SELECT Age_Brackets,
+       CDC.Category,
+       CONCAT(CAST(Count_Distinct_Order * 1.0/Count_Distinct_Category AS DECIMAL(5, 2)) * 100, '%') AS Probability
+FROM Count_Distinct_CustomerOrder AS CDC
+INNER JOIN Count_Distinct_OrderCategory AS CDO ON CDC.Category = CDO.Category
+
+
+
 
