@@ -63,6 +63,26 @@ ORDER BY CASE
          END;
 
 
+-- DOANH SỐ BÁN HÀNG TRUNG BÌNH THEO THÁNG
+WITH Count_Distint_OrderDate AS
+  (SELECT DATEPART(MONTH, OrderDate) AS Month_Order,
+          COUNT(DISTINCT(OrderDate)) AS Count_OrderDate
+   FROM OrderTea
+   WHERE Order_ID IS NOT NULL
+   GROUP BY DATEPART(MONTH, OrderDate)),
+     Total_Price AS
+  (SELECT DATEPART(MONTH, OrderDate) AS Month_Order,
+          SUM(TotalPrice) Sum_TotalPrice
+   FROM OrderTea
+   WHERE Order_ID IS NOT NULL
+   GROUP BY DATEPART(MONTH, OrderDate))
+SELECT CONCAT('Tháng ', CDOD.Month_Order) AS Month_Order,
+       TP.Sum_TotalPrice/Count_OrderDate AS AVG_Revenue
+FROM Count_Distint_OrderDate AS CDOD
+INNER JOIN Total_Price AS TP ON CDOD.Month_Order = TP.Month_Order
+ORDER BY CDOD.Month_Order ASC;
+
+
 -- DOANH SỐ BÁN HÀNG TB THEO NGÀY TRONG TUẦN
 WITH Doanh_Số_bán AS
   (SELECT CAST(Orderdate AS date) AS Ngày_Cụ_Thể, 
@@ -92,7 +112,7 @@ ORDER BY CASE
          END; 
 
 
--- DOANH SỐ BÁN TRUNG BÌNH THEO NGÀY TRONG THÁNG (CÔNG THỨC SUM(DoanhThuTheoTừngNgày)/COUNT(SốNgàyTrongTháng))
+-- DOANH SỐ BÁN TRUNG BÌNH THEO NGÀY TRONG THÁNG
 WITH Doanh_Số_bán AS
   (SELECT CAST(OrderDate AS DATE) AS Ngày,
           DATEPART(DAY, OrderDate) AS Ngày_Trong_Tháng,
@@ -301,6 +321,7 @@ INNER JOIN CountOrderMonth AS COM ON COD.Category_ID = COM.Category_ID
 AND COD.Month = COM.Month
 ORDER BY COD.MONTH,
          Category_ID ASC;
+
 
 
 
