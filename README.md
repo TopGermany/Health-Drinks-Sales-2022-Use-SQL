@@ -12,10 +12,18 @@ The main objectives are:
 
 ---
 
+
+## 🚀 Technologies Used
+- **SQL** (MySQL / PostgreSQL / SQLite)  
+- **Excel** (data preprocessing)
+- **PowerBI** (data Visualization)
+
+---
 ## 📂 **Data**
 The project uses 2 main datasets:  
 - `DataNotCleaned.xlsx`: raw data, not cleaned.  
 - `DataCleanedCustomer,Sales(OrderTea).csv`: cleaned data ready for analysis.  
+
 
 Selected columns for analysis:  
 - **sales**: transaction details (OrderDate, OrderTime, Order ID, Quantity, TotalPrice).  
@@ -191,18 +199,12 @@ ORDER BY Hour_Range ASC;
 | 23:00-23:59 | 856225                | 16   |
 
 
-
-
 ## 📈 Expected Results
 - Revenue by beverage type.  
 - Customer segmentation by age and occupation.  
 - Revenue growth trends over time.  
 - Best-selling products and potential customer groups.  
 
-## 🚀 Technologies Used
-- **SQL** (MySQL / PostgreSQL / SQLite)  
-- **Excel** (data preprocessing)
-- **PowerBI** (data Visualization)
 
 ## ✅ Conclusion
 The analysis of healthy beverage sales data helps to:  
