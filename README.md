@@ -201,7 +201,8 @@ ORDER BY Hour_Range ASC;
 
 ## 🚀 Technologies Used
 - **SQL** (MySQL / PostgreSQL / SQLite)  
-- **Excel** (data preprocessing)  
+- **Excel** (data preprocessing)
+- **PowerBI** (data Visualization)
 
 ## ✅ Conclusion
 The analysis of healthy beverage sales data helps to:  
